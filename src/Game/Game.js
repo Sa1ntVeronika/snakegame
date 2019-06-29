@@ -9,9 +9,11 @@ export default class Game extends Component {
        width: 10,
        height: 10,
        snake: [
-
+         [1,1],
+         [1,2],
+         [1,3]
        ],
-       field: Array(3).fill(Array(2).fill(1)),
+       field: Array(10).fill(Array(10).fill(1)),
        direction: String(),
 
     }
@@ -25,7 +27,7 @@ export default class Game extends Component {
             <div>
               {
                 x.map((y, yIndex) => {
-                  return <Cell x={xIndex} y={yIndex} key={x} />
+                  return <Cell x={xIndex} y={yIndex} key={xIndex+yIndex} snakeCells={this.state.snake} />
                 })
               }
             </div>
