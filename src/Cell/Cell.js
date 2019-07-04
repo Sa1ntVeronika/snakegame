@@ -6,16 +6,36 @@ export default class Cell extends Component {
     super(props)
   
     this.state = {
-       snakeCell: true,
-       foodCell: true,
-
+      snakeCell: 'n',
+      foodCell: true,
     }
   }
   
+  checkForSnakeCells() {
+    if (this.props.snakeCells.some(cell => cell[0] === this.props.x && cell[1] === this.props.y
+    )) {
+      this.setState({
+        snakeCell: 's'
+      })
+    } else {
+      this.setState({
+        snakeCell: 'n'
+      })
+    }
+  }
+
+  componentDidMount() {    
+    this.checkForSnakeCells();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    this.checkForSnakeCells();
+  }
+
   render() {
     return (
       <span className='cell'>
-         {this.props.y} {this.props.x}
+         {this.state.snakeCell}
       </span>
     )
   }
