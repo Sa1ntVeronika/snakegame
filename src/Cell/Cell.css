@@ -1,7 +1,19 @@
 .cell {
-  display: inline-block;
-  border: 1px solid #555;
-  background-color: #DDD;
+  margin: 1px;
+  display: flex;
+  border-radius: 30%;
+  transition: 0.5ms;
+  background-color: rgb(126, 126, 230);
   min-height: 20px;
   min-width: 20px;
+  box-shadow: 
+}
+
+.snake {
+  background-color: aqua;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.apple {
+  background-color: greenyellow;
 }

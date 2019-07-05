@@ -6,8 +6,8 @@ export default class Cell extends Component {
     super(props)
   
     this.state = {
-      snakeCell: 'n',
-      foodCell: true,
+      snakeCell: false,
+      appleCell: false,
     }
   }
   
@@ -15,17 +15,26 @@ export default class Cell extends Component {
     if (this.props.snakeCells.some(cell => cell[0] === this.props.x && cell[1] === this.props.y
     )) {
       this.setState({
-        snakeCell: 's'
+        snakeCell: true
       })
     } else {
       this.setState({
-        snakeCell: 'n'
+        snakeCell: false
+      })
+    }
+  }
+
+  checkForAppleCells() {
+    if (this.props.appleCell[0] === this.props.x && this.props.appleCell[1] === this.props.y) {
+      this.setState({
+        appleCell: true
       })
     }
   }
 
   componentDidMount() {    
     this.checkForSnakeCells();
+    this.checkForAppleCells();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,9 +43,10 @@ export default class Cell extends Component {
 
   render() {
     return (
-      <span className='cell'>
-         {this.state.snakeCell}
-      </span>
+      <div className={this.state.snakeCell ? 'cell snake' : 
+                                              this.state.appleCell ? 'cell apple' :
+                                              'cell'}>
+      </div>
     )
   }
 }

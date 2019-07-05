@@ -1,0 +1,9 @@
+.Game {
+  display: flex;
+  flex-direction: column;
+}
+
+.Row {
+  display:flex;
+  margin: 0;
+}
